@@ -66,13 +66,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 					Role adminRole = roleRepository.findByName(RoleType.ROLE_ADMIN)
 							.orElseThrow(() -> new RoleDoesNotExistException(role));
 					roles.add(adminRole);
-
 					break;
 				case "mod":
 					Role modRole = roleRepository.findByName(RoleType.ROLE_MODERATOR)
 							.orElseThrow(() -> new RoleDoesNotExistException(role));
 					roles.add(modRole);
-
 					break;
 				default:
 					Role userRole = roleRepository.findByName(RoleType.ROLE_USER)

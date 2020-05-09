@@ -45,6 +45,7 @@ public class AuthenticationController {
 
 	@PostMapping("/signin")
 	public ResponseEntity<LoginResponse> createToken(@RequestBody @Valid LoginRequest request) {
+
 		Authentication authentication = authManager
 				.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
