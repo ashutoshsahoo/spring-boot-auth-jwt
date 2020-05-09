@@ -1,0 +1,11 @@
+jwt:
+  audience: myapp
+  issuer: mycompanyname
+  secret: 4ao25ZPL/aC3lqRuDoj9RsuxLq+TtgkSAGkXFQ==jucr3j0SwCaCzNlePozoUIXl
+  tokenvalidity: 18000000 # 5*60*60*1000
+  type: Bearer
+  
+server:
+  servlet:
+    context-path: /api/v1
+    

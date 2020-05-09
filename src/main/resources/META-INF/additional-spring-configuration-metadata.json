@@ -1,0 +1,29 @@
+{
+	"properties": [
+		{
+			"name": "jwt.tokenvalidity",
+			"type": "java.lang.Long",
+			"description": "Token validity time in milliseconds"
+		},
+		{
+			"name": "jwt.type",
+			"type": "java.lang.String",
+			"description": "Token type'"
+		},
+		{
+			"name": "jwt.secret",
+			"type": "java.lang.String",
+			"description": "JWT secret"
+		},
+		{
+			"name": "jwt.issuer",
+			"type": "java.lang.String",
+			"description": "JWT issuer"
+		},
+		{
+			"name": "jwt.audience",
+			"type": "java.lang.String",
+			"description": "JWT audience"
+		}
+	]
+}
