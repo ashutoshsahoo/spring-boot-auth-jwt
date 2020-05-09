@@ -1,8 +1,6 @@
 package in.ashu.practice.util;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.function.Function;
 
 import javax.crypto.SecretKey;
 
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import in.ashu.practice.config.JwtConfigProperties;
 import in.ashu.practice.model.UserDetailsImpl;
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -22,16 +19,14 @@ import io.jsonwebtoken.security.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Utility class that provides methods for handling jwt.
+ * Utility class that provides methods for handling jwt token.
  *
  * @author ashutoshsahoo
  *
  */
 @Component
 @Slf4j
-public class JwtUtils implements Serializable {
-
-	private static final long serialVersionUID = -7320249530407047386L;
+public class JwtUtils {
 
 	private final JwtConfigProperties jwtConfigProperties;
 
@@ -46,28 +41,6 @@ public class JwtUtils implements Serializable {
 	public String getUsernameFromToken(String token) {
 		return Jwts.parserBuilder().setSigningKey(jwtConfigProperties.getSecret().getBytes()).build()
 				.parseClaimsJws(token).getBody().getSubject();
-	}
-
-	/*
-	 * Retrieve expiration date from jwt token.
-	 */
-
-	public Date getExpirationDateFromToken(String token) {
-		return getClaimFromToken(token, Claims::getExpiration);
-	}
-
-	public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
-		final Claims claims = getAllClaimsFromToken(token);
-		return claimsResolver.apply(claims);
-	}
-
-	/*
-	 * Retrieving all the information from token using the secret key.
-	 */
-
-	private Claims getAllClaimsFromToken(String token) {
-		return Jwts.parserBuilder().setSigningKey(jwtConfigProperties.getSecret().getBytes()).build()
-				.parseClaimsJws(token).getBody();
 	}
 
 	/*
